@@ -1,0 +1,98 @@
+---
+title: "My First time seeing penguins"
+author: "Haileigh Patterson"
+date: "13/03/2022"
+output: 
+  pdf_document
+---
+
+```{r load-packages, include=FALSE}
+library(dplyr)
+library(magrittr)
+library(knitr)
+library(tidyverse)
+# penguins <- read_csv("C:/Users/omcla/OneDrive/Documents/R/win-library/4.1/palmerpenguins/extdata/penguins.csv")
+library(palmerpenguins) ## install using install.packages() if not already installed
+library(ggplot2) ## install using install.packages() if not already installed
+```
+
+# Going to SEA LIFE Kelly Tarlton's 
+
+In February I went to [Kelly Tarlton's](https://www.visitsealife.com/auckland/) and saw penguins for the first time with my friend Sian. 
+
+I was *23 years old* when I first saw a **penguin** 
+
+* They have the following penguins:
+  * King Penguins
+  + Gentoo Penguins
+
+The price to see the penguins at Kelly Tarlton's is:
+
+Age  | Price
+------------- | -------------
+Adult | $41.00
+Child  | $29.00
+~~Illegally entering~~  | ~~Free~~
+
+
+
+## `R` code - Average flipper length evaluated and printed
+
+
+```{r}
+penguins_nafree <- penguins %>% drop_na()
+summarise(penguins_nafree, avg_flipper_length = mean(flipper_length_mm))
+``` 
+
+
+
+### Average flipper length evaluated only
+
+
+```{r, echo = FALSE}
+penguins_nafree <- penguins %>% drop_na()
+summarise(penguins_nafree, avg_flipper_length = mean(flipper_length_mm))
+``` 
+
+### Average body mass printed code only
+
+```{r eval = FALSE}
+penguins_nafree <- penguins %>% drop_na()
+summarise(penguins_nafree, avg_flipper_length = mean(flipper_length_mm))
+``` 
+
+
+### Plot with code
+
+```{r, warning = FALSE}
+ggplot(penguins_nafree,aes(x = body_mass_g, y = flipper_length_mm, colour = species)) +
+    geom_point() +
+theme_bw() +
+labs(title = "Flipper Length by Body Mass",
+         x = "Body Mass (g)", 
+         y = "Flipper Length (mm)")
+```
+
+### Plot only
+
+```{r, warning = FALSE, echo=FALSE}
+ggplot(penguins_nafree,aes(x = body_mass_g, y = flipper_length_mm, colour = species)) +
+    geom_point() +
+theme_bw() +
+labs(title = "Flipper Length by Body Mass",
+         x = "Body Mass (g)", 
+         y = "Flipper Length (mm)")
+```
+
+### Plot with caption
+
+```{r, warning = FALSE, echo=FALSE}
+ggplot(penguins_nafree,aes(x = body_mass_g, y = flipper_length_mm, colour = species)) +
+    geom_point() +
+theme_bw() +
+labs(title = "Flipper Length by Body Mass",
+         x = "Body Mass (g)", 
+         y = "Flipper Length (mm)")
+```
+
+
